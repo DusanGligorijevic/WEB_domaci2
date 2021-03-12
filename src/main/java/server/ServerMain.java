@@ -24,6 +24,7 @@ public class ServerMain {
             while(true) {
                 Socket socket = ss.accept();
                 executorService.submit(new ServerThread(socket, table));
+
             }
 
         } catch (IOException e) {

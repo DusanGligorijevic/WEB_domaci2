@@ -11,9 +11,10 @@ public class ServerThread extends Thread {
     Socket socket;
     BufferedReader in;
     PrintWriter out;
-
+    private static int flag=0;
     private Gson gson;
     private Table table;
+    Thread game;
 
     public ServerThread(Socket socket, Table table) {
         this.socket = socket;
@@ -42,11 +43,19 @@ public class ServerThread extends Thread {
             if(request.getAction() == Action.REQUEST_CHAIR) {
                 if(table.giveSeat(player)){
                     response.setResult(Result.SUCCESS);
-                }
+                    System.out.println("Igrač "+player.getId()+" je seo na mesto broj "+ player.getNumberOfSeat());
+                    flag++;
+                }else
+                    System.out.println("Igrač "+player.getId()+ " je izašao iz prostorije.");
                 sendResponse(response);
             }
 
             // TODO
+           if(flag==6){
+               flag++;
+               game= new Thread (new Game(table));
+               game.start();
+           }
 
         } catch (IOException e) {
             e.printStackTrace();

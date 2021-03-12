@@ -40,9 +40,9 @@ public class ClientThread implements Runnable{
         Response response = receiveResponse();
 
         if(response.getResult() == Result.SUCCESS) {
-            System.out.println("Igrad " + id.toString() + " je uspeo da se prikljuci igri.");
+            System.out.println("Igrac " + id.toString() + " je uspeo da se prikljuci igri.");
         } else {
-            System.out.println("Igrad " + id.toString() + " nije uspeo da se prikljuci igri.");
+            System.out.println("Igrac " + id.toString() + " nije uspeo da se prikljuci igri.");
         }
 
     }
