@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
 public class ServerMain {
 
     private static final int PORT = 9999;
+    public static final String LOCK="LOCK";
 
     public static void main(String[] args) {
 
